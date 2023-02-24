@@ -4,10 +4,14 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinColumn,
+    OneToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn
 } from "typeorm";
 import * as bcrypt from 'bcrypt';
+import { Profile } from "./profile.entity";
+import { UserRole } from "../enums/user.enum";
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -26,6 +30,16 @@ export class User extends BaseEntity {
         type: 'varchar',
     })
     password: string;
+
+    @Column({
+        type: 'varchar',
+        default: UserRole.USER
+    })
+    role: string;
+
+    @OneToOne(() => Profile)
+    @JoinColumn({ name: 'profileId'})
+    profileId: Profile
 
     @CreateDateColumn()
     createdAt: Date;
