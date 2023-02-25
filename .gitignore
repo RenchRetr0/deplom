@@ -1,4 +1,7 @@
 # compiled output
+/.gitignore
+/backend/.gitignore
+/client/.gitignore
 /backend/dist
 /backend/.env
 /backend/node_modules
