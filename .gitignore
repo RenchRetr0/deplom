@@ -3,7 +3,6 @@
 /backend/.gitignore
 /client/.gitignore
 /backend/dist
-/backend/.env
 /backend/node_modules
 /client/node_modules
 /client/.pnp

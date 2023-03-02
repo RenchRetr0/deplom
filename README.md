@@ -31,10 +31,10 @@ npm install
 
 Для запуска пректа потребуется открыть два терминала, которые будут запускать два сервиса в каталогах:
 ```sh
-# Запуск проекта в катологе [**backend**](https://github.com/RenchRetr0/deplom/tree/feature/registration/backend):
+# Запуск проекта в катологе backend
 npm run start:dev
 
-# Запуск проекта в катологе [**client**](https://github.com/RenchRetr0/deplom/tree/feature/registration/client):
+# Запуск проекта в катологе client
 npm start
 ```
 
