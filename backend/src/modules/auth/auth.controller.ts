@@ -1,5 +1,4 @@
-import { Controller, Post, Body, UseGuards, Get, Request, Res, HttpStatus } from '@nestjs/common';
-import { Response } from 'express';
+import { Controller, Post, Body, UseGuards, Get, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { EmailUserDto } from './dto/EmailUser.dto';
 import { UserResponseDto } from './dto/UserResponse.dto';
@@ -12,11 +11,8 @@ export class AuthController {
     constructor(private authService: AuthService) {}
 
     @Post('signIn')
-    async signIn(@Body() emailUserDto: EmailUserDto, @Res() res: Response) {
-        const userSignIn = await this.authService.signIn(emailUserDto);
-
-        res.statusCode = HttpStatus.OK;
-        return res.send({ userSignIn });
+    async signIn(@Body() emailUserDto: EmailUserDto): Promise<UserResponseDto> {
+        return await this.authService.signIn(emailUserDto);
     }
 
     @UseGuards(JWTAuthGuard)
