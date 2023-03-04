@@ -10,21 +10,21 @@ import { Roles } from './roles.decorator';
 export class AuthController {
     constructor(private authService: AuthService) {}
 
-    // @Post('signIn')
-    // async signIn(@Body() emailUserDto: EmailUserDto): Promise<UserResponseDto> {
-    //     return await this.authService.signIn(emailUserDto);
-    // }
+    @Post('signIn')
+    async signIn(@Body() emailUserDto: EmailUserDto): Promise<UserResponseDto> {
+        return await this.authService.signIn(emailUserDto);
+    }
 
-    // @UseGuards(JWTAuthGuard)
-    // @Get('user')
-    // async user(@Request() req): Promise<any> {
-    //     return req.user;
-    // }
+    @UseGuards(JWTAuthGuard)
+    @Get('user')
+    async user(@Request() req): Promise<any> {
+        return req.user;
+    }
 
-    // @UseGuards(JWTAuthGuard, RoleGuard)
-    // @Roles('admin')
-    // @Get('admin')
-    // async admin(@Request() req): Promise<any> {
-    //     return req.user;
-    // }
+    @UseGuards(JWTAuthGuard, RoleGuard)
+    @Roles('admin')
+    @Get('admin')
+    async admin(@Request() req): Promise<any> {
+        return req.user;
+    }
 }

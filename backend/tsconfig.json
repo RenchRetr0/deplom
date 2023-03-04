@@ -20,7 +20,7 @@
     "paths": {
       "@common/*": ["src/common/*"],
       "@profile/*": ["src/modules/profile/*"],
-      "@user/*": ["srt/modules/user/*"]
+      "@user/*": ["src/modules/user/*"]
     }
   }
 }
