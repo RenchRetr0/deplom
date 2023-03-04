@@ -10,11 +10,12 @@ import {
     UpdateDateColumn
 } from "typeorm";
 import * as bcrypt from 'bcrypt';
-import { Profile } from "./profile.entity";
-import { UserRole } from "../enums/user.enum";
+import { Profile } from "@profile/entities/profile.entity";
+import { Role } from "@common/enums/roles.enum";
+import { UserProps } from "../interfaces/userProps";
 
 @Entity('users')
-export class User extends BaseEntity {
+export class User extends BaseEntity implements UserProps {
     @PrimaryGeneratedColumn({
         comment: 'The user unique identifier'
     })
@@ -24,28 +25,28 @@ export class User extends BaseEntity {
         type: 'varchar',
         unique: true,
     })
-    email: string;
+    email!: string;
 
     @Column({
         type: 'varchar',
     })
-    password: string;
+    password!: string;
 
     @Column({
         type: 'varchar',
-        default: UserRole.USER
+        default: Role.USER
     })
-    role: string;
+    role?: string;
 
     @OneToOne(() => Profile)
     @JoinColumn({ name: 'profileId'})
-    profileId: Profile
+    profileId: Profile;
 
     @CreateDateColumn()
-    createdAt: Date;
+    createdAt?: Date;
 
     @UpdateDateColumn()
-    updateAt: Date;
+    updateAt?: Date;
 
     @BeforeInsert()
     async setPassword(password: string) {

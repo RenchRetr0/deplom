@@ -1,41 +1,41 @@
 import { Injectable, BadRequestException, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { User } from '@user/entitys/user.entity';
-import { UserService } from '@user/service/user.service';
+// import { User } from '@user/entitys/user.entity';
+// import { UserService } from '@user/service/user.service';
 import { EmailUserDto } from './dto/EmailUser.dto';
 import { UserResponseDto } from './dto/UserResponse.dto';
 
 @Injectable()
 export class AuthService {
     constructor(
-        private userService: UserService,
+        // private userService: UserService,
         private jwtService: JwtService
     ) {}
 
-    async signIn(emailUserDto: EmailUserDto): Promise<UserResponseDto> {
-        const email = emailUserDto.email;
+    // async signIn(emailUserDto: EmailUserDto): Promise<UserResponseDto> {
+    //     const email = emailUserDto.email;
 
-        const user = await this.userService.findOne({email});
-        if(!user) throw new BadRequestException();
+    //     const user = await this.userService.findOne({email});
+    //     if(!user) throw new BadRequestException();
 
-        if(!(await bcrypt.compare(emailUserDto.password, user.password))) {
-            throw new UnauthorizedException();
-        }
+    //     if(!(await bcrypt.compare(emailUserDto.password, user.password))) {
+    //         throw new UnauthorizedException();
+    //     }
 
-        const access_token = await this.generateToken(user);
+    //     const access_token = await this.generateToken(user);
 
-        return {
-            email: user.email,
-            access_token
-        }
-    }
+    //     return {
+    //         email: user.email,
+    //         access_token
+    //     }
+    // }
 
-    async generateToken(user: User): Promise<string> {
-        const access_token = this.jwtService.sign({
-                password: user.password,
-                userId: user.userId,
-            });
-        return access_token;
-    }
+    // async generateToken(user: User): Promise<string> {
+    //     const access_token = this.jwtService.sign({
+    //             password: user.password,
+    //             userId: user.userId,
+    //         });
+    //     return access_token;
+    // }
 }

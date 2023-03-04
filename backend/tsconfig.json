@@ -19,7 +19,8 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@common/*": ["src/common/*"],
-      "@user/*": ["src/modules/user/*"]
+      "@profile/*": ["src/modules/profile/*"],
+      "@user/*": ["srt/modules/user/*"]
     }
   }
 }

@@ -6,9 +6,10 @@ import {
     PrimaryGeneratedColumn,
     UpdateDateColumn
 } from "typeorm";
+import { ProfileProps } from "../interfaces/profileProps";
 
 @Entity('profile')
-export class Profile extends BaseEntity {
+export class Profile extends BaseEntity implements ProfileProps {
     @PrimaryGeneratedColumn({
         comment: 'The profil unique identifier'
     })
@@ -17,12 +18,12 @@ export class Profile extends BaseEntity {
     @Column({
         type: 'varchar',
     })
-    last_name: string;
+    last_name!: string;
 
     @Column({
         type: 'varchar',
     })
-    first_name: string;
+    first_name!: string;
 
     @Column({
         type: 'varchar',
@@ -33,17 +34,17 @@ export class Profile extends BaseEntity {
     @Column({
         type: 'varchar',
     })
-    phone: string;
+    phone!: string;
 
     @Column({
         type: Boolean,
         default: false
     })
-    confirm: boolean;
+    confirm!: boolean;
 
     @CreateDateColumn()
-    createdAt: Date;
+    createdAt?: Date;
 
     @UpdateDateColumn()
-    updateAt: Date;
+    updateAt?: Date;
 }
